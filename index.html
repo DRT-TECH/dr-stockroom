@@ -203,7 +203,7 @@ td input.d{width:44px;text-align:center;padding:3px 2px}
 td.n{text-align:right;font-variant-numeric:tabular-nums;font-weight:600;min-width:62px}
 .ad{background:var(--okbg)}td.ad input.d{background:var(--okbg)}
 .pill{display:inline-block;padding:1px 9px;border-radius:99px;font-size:12px;font-weight:600}
-.pill.ok{background:var(--okbg);color:var(--ok)}.pill.soon{background:var(--lowbg);color:var(--low)}.pill.exp,.pill.out{background:var(--outbg);color:var(--out)}
+.pill.ok{background:var(--okbg);color:var(--ok)}.pill.soon{background:var(--lowbg);color:var(--low)}.pill.exp,.pill.out{background:var(--outbg);color:var(--out)}.pill.low{background:var(--stockbg,#dbeafe);color:var(--stock,#1d4ed8)}
 .x{padding:0 6px;border:0;background:none;color:var(--mute)}
 .empty{padding:28px;text-align:center;color:var(--mute)}
 .note{color:var(--mute);font-size:12px;margin-top:10px}
@@ -233,7 +233,7 @@ td.n{min-width:52px}
 td input.qn{width:60px;border-color:var(--line)}
 .qe button{padding:4px 9px}.qe [data-q=d]{color:var(--out)}
 tbody tr:hover td{background:var(--head)}
-tr.st-out td.s1,tr.st-exp td.s1{box-shadow:inset 3px 0 var(--out)}tr.st-soon td.s1{box-shadow:inset 3px 0 var(--low)}
+tr.st-out td.s1,tr.st-exp td.s1{box-shadow:inset 3px 0 var(--out)}tr.st-soon td.s1{box-shadow:inset 3px 0 var(--low)}tr.st-low td.s1{box-shadow:inset 3px 0 var(--stock,#1d4ed8)}
 .tw{max-height:72vh}
 .dl{display:flex;align-items:center;gap:4px;font-size:10px;color:var(--mute)}.dl span{width:26px}.dt input{width:118px}.s2 input{width:150px}.br input{width:84px}.ty input{width:66px}
 .qe button[data-h]{padding:4px 7px}td input.qn{width:54px}.s2 input{width:158px}
@@ -279,7 +279,7 @@ body.na .ea{display:none}
  table{min-width:0;display:block}thead{display:none}
  tbody{display:grid;gap:12px}
  tbody tr{display:grid;grid-template-columns:1fr 1fr;gap:10px 12px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px;border-left-width:4px}
- tr.st-out,tr.st-exp{border-left-color:var(--out)!important}tr.st-soon{border-left-color:var(--low)!important}
+ tr.st-out,tr.st-exp{border-left-color:var(--out)!important}tr.st-soon{border-left-color:var(--low)!important}tr.st-low{border-left-color:var(--stock,#1d4ed8)!important}
  tbody td,tbody tr:nth-child(even) td,tbody tr:hover td{display:block;border:0;padding:0;background:none;position:static;min-width:0;text-align:left;box-shadow:none!important}
  td::before{content:attr(data-l);display:block;font-size:11px;color:var(--mute);text-transform:uppercase;letter-spacing:.03em;margin-bottom:3px}
  td.s1{grid-column:1/-1;display:flex!important;justify-content:space-between;align-items:center;font-weight:700}td.s1::before{display:none}
@@ -468,11 +468,14 @@ body[data-pg=prod] .mp .tw{max-height:calc(100vh - 170px)}
 .mchip:hover{border-color:var(--accent)}
 .mchip.on{background:var(--accent);border-color:var(--accent);color:var(--on)}.mchip.on span{color:var(--on);opacity:.85}
 .mchip.cur:not(.on) b::after{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--accent);margin-left:5px;vertical-align:1px}
+.mchip .mdot{display:block;width:5px;height:5px;border-radius:50%;background:var(--ok);margin-top:3px}
+.mchip.on .mdot{background:var(--on);opacity:.85}
+.mchip.flat span{opacity:.72}
 
 /* ===== Document Tracker look ===== */
-:root{--bg:#e9eef0;--surface:#fff;--ink:#14213d;--mute:#5b6b7f;--line:#d3dce2;--accent:#0f766e;--on:#fff;--head:#eef3f5;--hd:#14213d;--ok:#0f766e;--low:#c2410c;--out:#dc2626;--okbg:#d9f0ec;--lowbg:#fdebdc;--outbg:#fde4e4}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e141b;--surface:#18212b;--ink:#e6edf3;--mute:#93a4b7;--line:#2a3744;--accent:#2dd4bf;--on:#06201d;--head:#1f2a36;--hd:#18212b;--ok:#2dd4bf;--low:#fb923c;--out:#f87171;--okbg:#12332f;--lowbg:#3a2412;--outbg:#3d1a1a}}
-:root[data-theme="dark"]{--bg:#0e141b;--surface:#18212b;--ink:#e6edf3;--mute:#93a4b7;--line:#2a3744;--accent:#2dd4bf;--on:#06201d;--head:#1f2a36;--hd:#18212b;--ok:#2dd4bf;--low:#fb923c;--out:#f87171;--okbg:#12332f;--lowbg:#3a2412;--outbg:#3d1a1a}
+:root{--bg:#e9eef0;--surface:#fff;--ink:#14213d;--mute:#5b6b7f;--line:#d3dce2;--accent:#0f766e;--on:#fff;--head:#eef3f5;--hd:#14213d;--ok:#0f766e;--low:#c2410c;--out:#dc2626;--stock:#1d4ed8;--okbg:#d9f0ec;--lowbg:#fdebdc;--outbg:#fde4e4;--stockbg:#dbeafe}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e141b;--surface:#18212b;--ink:#e6edf3;--mute:#93a4b7;--line:#2a3744;--accent:#2dd4bf;--on:#06201d;--head:#1f2a36;--hd:#18212b;--ok:#2dd4bf;--low:#fb923c;--out:#f87171;--stock:#60a5fa;--okbg:#12332f;--lowbg:#3a2412;--outbg:#3d1a1a;--stockbg:#17304d}}
+:root[data-theme="dark"]{--bg:#0e141b;--surface:#18212b;--ink:#e6edf3;--mute:#93a4b7;--line:#2a3744;--accent:#2dd4bf;--on:#06201d;--head:#1f2a36;--hd:#18212b;--ok:#2dd4bf;--low:#fb923c;--out:#f87171;--stock:#60a5fa;--okbg:#12332f;--lowbg:#3a2412;--outbg:#3d1a1a;--stockbg:#17304d}
 body{font-family:"Public Sans","Segoe UI",system-ui,-apple-system,Roboto,sans-serif}
 h1,h2,h3,.stat b,.panel h3,.mchip b{font-family:"Bricolage Grotesque","Public Sans",system-ui,sans-serif}
 button,input,select{border-radius:8px}
@@ -963,7 +966,7 @@ body[data-pg=users] .mc>:is(.mcard,.stats,.g2,.mp,.note),body[data-pg=report] .m
   <div class="tr"><button id="thm" class="tgl" role="switch" aria-checked="false" aria-label="Dark mode" title="Light / dark"><svg class="sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg><svg class="moon" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg><span class="knob"></span></button><div class="um" id="um"><button type="button" class="uc" id="who" aria-haspopup="menu" aria-expanded="false"><div class="av" id="av">?</div><div class="ut"><div class="un" id="un"></div><div class="ur" id="ur"></div></div><svg class="chev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></button><div class="umm" id="umm" role="menu" hidden><div class="umh"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></svg><span id="umn"></span></div><button type="button" role="menuitem" id="mprof">Profile</button><button type="button" role="menuitem" id="mset">Settings</button><button type="button" role="menuitem" id="mout">Logout</button></div></div></div>
 </header>
 <div class="mc">
-<div class="mcard"><div class="mhead"><div class="mscap">Ending stock per month · tap a month to view it</div><div class="ynav"><button type="button" id="yp" aria-label="Previous year">‹</button><select id="ysel" aria-label="Year"></select><button type="button" id="yn" aria-label="Next year">›</button></div></div><div class="mstrip" id="mstrip" role="tablist" aria-label="Month"></div></div>
+<div class="mcard"><div class="mhead"><div class="mscap">Ending stock per month · tap a month to view it. A number carries over unchanged until stock is added or deducted that month — the dot marks months with recorded movement.</div><div class="ynav"><button type="button" id="yp" aria-label="Previous year">‹</button><select id="ysel" aria-label="Year"></select><button type="button" id="yn" aria-label="Next year">›</button></div></div><div class="mstrip" id="mstrip" role="tablist" aria-label="Month"></div></div>
 <div id="dfn" class="dfn" hidden>You are signed in with a default password. An admin should change it in Accounts.</div>
 <section class="stats" id="stats"></section>
 <section class="g2">
@@ -975,7 +978,7 @@ body[data-pg=users] .mc>:is(.mcard,.stats,.g2,.mp,.note),body[data-pg=report] .m
   <div class="bar">
     <label class="sub" style="display:flex;align-items:center;gap:6px">Date for Add and Deduct <input type="date" id="edate"></label>
     <input type="search" id="q" placeholder="Search item or brand">
-    <select id="fs" aria-label="Status"><option value="">All statuses</option><option value="out">Out of stock</option><option value="exp">Expired</option><option value="soon">Expires within 30 days</option><option value="ok">OK</option></select>
+    <select id="fs" aria-label="Status"><option value="">All statuses</option><option value="out">Out of stock</option><option value="exp">Expired</option><option value="low">Low stock</option><option value="soon">Expires within 30 days</option><option value="ok">OK</option></select>
   </div></div>
   <div class="tw"><table><thead id="head"></thead><tbody id="rows"></tbody></table><div class="empty" id="none" hidden><div class="eb"><b>No products to show</b><p class="sub">Add a product, or import many at once from Excel.</p><div class="ea"><button class="primary" id="e1">+ Add product</button><button id="e2">Import products</button></div><button id="mvw" hidden>Move this browser's data to the shared inventory</button></div></div></div>
 </section>
@@ -1082,7 +1085,7 @@ body[data-pg=users] .mc>:is(.mcard,.stats,.g2,.mp,.note),body[data-pg=report] .m
   <h2>New item</h2><div class="sub" id="pm"></div>
   <label>Item<input name="name" required></label>
   <div class="r2"><label>Brand<input name="brand"></label><label>Quantity<input name="open" type="number" min="0" max="1000000" step="any" value="0" required></label></div>
-  <div class="r2"><label>Quantity type<select name="type"><option selected>Piece</option><option>Box</option><option>Reams</option><option>Bottle</option></select></label><span></span></div>
+  <div class="r2"><label>Quantity type<select name="type"><option selected>Piece</option><option>Box</option><option>Reams</option><option>Bottle</option></select></label><label>Min qty for low-stock alert<input name="min" type="number" min="0" max="1000000" step="any" value="0"></label></div>
   <div class="r2"><label>MFG date<input name="mfg" type="date"></label><label>Expiration date<input name="exp" type="date"></label></div>
   <div class="acts"><button type="button" id="pcancel">Close</button><button type="button" id="pmore">Save and add another</button><button type="button" class="primary" id="psave">Save product</button></div>
   
@@ -1129,17 +1132,17 @@ async function replaceAll(ni){const ents=[];ni.forEach(it=>{it.id=uid();for(cons
 const mt=(it,k)=>{let a=0,d=0;for(let i=1;i<=dim(k);i++){const t=it.t[k+"-"+i];if(t){a+=t[0];d+=t[1]}}return[a,d]};
 const opening=(it,k)=>{let o=it.open||0;for(let j=it.sm;j<k;j++){const[a,d]=mt(it,j);o+=a-d}return o};
 const iso=d=>d.toISOString().slice(0,10);
-function info(it){const o=opening(it,m),[a,d]=mt(it,m),e=o+a-d,td=iso(new Date()),s30=iso(new Date(Date.now()+30*864e5));
-  const s=e<=0?"out":it.exp&&it.exp<td?"exp":it.exp&&it.exp<=s30?"soon":"ok";return{o,a,d,e,s}}
-const L={ok:"OK",out:"Out of stock",exp:"Expired",soon:"Expires soon"};
+function info(it){const o=opening(it,m),[a,d]=mt(it,m),e=o+a-d,td=iso(new Date()),s30=iso(new Date(Date.now()+30*864e5)),low=it.min>0&&e>0&&e<=it.min;
+  const s=e<=0?"out":it.exp&&it.exp<td?"exp":low?"low":it.exp&&it.exp<=s30?"soon":"ok";return{o,a,d,e,s,low}}
+const L={ok:"OK",out:"Out of stock",exp:"Expired",soon:"Expires soon",low:"Low stock"};
 const TYPES=["Piece","Box","Reams","Bottle"];
 const typeSel=v=>{v=String(v||"Piece");const l=TYPES.includes(v)?TYPES:[...TYPES,v];return `<select data-f="type" aria-label="Quantity type">${l.map(t=>`<option${t===v?" selected":""}>${esc(t)}</option>`).join("")}</select>`};
-function head(){return `<tr><th class="s1 c">No.</th><th class="s2">Item</th><th>Brand</th><th class="c">Opening qty</th><th>Type</th><th>MFG date</th><th>Expiration date</th><th class="c">Added</th><th class="c">Deducted</th><th class="c" style="min-width:112px">Total ending balance for the month</th><th>Status</th><th>Quick entry</th></tr>`}
+function head(){return `<tr><th class="s1 c">No.</th><th class="s2">Item</th><th>Brand</th><th class="c">Opening qty</th><th class="c">Min qty</th><th>Type</th><th>MFG date</th><th>Expiration date</th><th class="c">Added</th><th class="c">Deducted</th><th class="c" style="min-width:112px">Total ending balance for the month</th><th>Status</th><th>Quick entry</th></tr>`}
 function row(it,i){const x=info(it);
-  return `<tr data-id="${it.id}" class="st-${x.s}"><td class="s1 c" data-l="No."><span>${i+1}</span><button class="x" data-del title="Delete item" aria-label="Delete item">×</button></td><td class="s2" data-l="Item"><input data-f="name" value="${esc(it.name)}" placeholder="Item name" aria-label="Item name"></td><td class="br" data-l="Brand"><input data-f="brand" value="${esc(it.brand)}" placeholder="Brand" aria-label="Brand"></td><td class="qo c" data-l="Opening qty"><input type="number" min="0" step="any" data-f="open" value="${x.o}" aria-label="Opening quantity" ${m===it.sm?"":"disabled title=\"Carried over from previous month\""}></td><td class="ty" data-l="Type">${typeSel(it.type)}</td><td class="dt" data-l="MFG date"><input type="date" data-f="mfg" value="${esc(it.mfg)}" aria-label="MFG date"></td><td class="dt" data-l="Expiration date"><input type="date" data-f="exp" value="${esc(it.exp)}" aria-label="Expiration date"></td><td class="n ad c" data-l="Added" data-c="a">${x.a}</td><td class="n c" data-l="Deducted" data-c="d">${x.d}</td><td class="n c" data-l="Ending balance" data-c="e">${x.e}</td><td data-l="Status" data-c="s"><span class="pill ${x.s}">${L[x.s]}</span></td><td class="qa" data-l="Quick entry"><div class="qe"><input class="qn" type="number" min="0" step="any" placeholder="Qty" aria-label="Quantity"><button class="primary" data-q="a">Add</button><button data-q="d">Deduct</button><button data-h title="View entries" aria-label="View entries">⋯</button></div></td></tr>`}
+  return `<tr data-id="${it.id}" class="st-${x.s}"><td class="s1 c" data-l="No."><span>${i+1}</span><button class="x" data-del title="Delete item" aria-label="Delete item">×</button></td><td class="s2" data-l="Item"><input data-f="name" value="${esc(it.name)}" placeholder="Item name" aria-label="Item name"></td><td class="br" data-l="Brand"><input data-f="brand" value="${esc(it.brand)}" placeholder="Brand" aria-label="Brand"></td><td class="qo c" data-l="Opening qty"><input type="number" min="0" step="any" data-f="open" value="${x.o}" aria-label="Opening quantity" ${m===it.sm?"":"disabled title=\"Carried over from previous month\""}></td><td class="mq c" data-l="Min qty"><input type="number" min="0" step="any" data-f="min" value="${it.min||0}" aria-label="Minimum quantity for low-stock alert" title="Alert when ending balance falls to this number or below. 0 = no alert."></td><td class="ty" data-l="Type">${typeSel(it.type)}</td><td class="dt" data-l="MFG date"><input type="date" data-f="mfg" value="${esc(it.mfg)}" aria-label="MFG date"></td><td class="dt" data-l="Expiration date"><input type="date" data-f="exp" value="${esc(it.exp)}" aria-label="Expiration date"></td><td class="n ad c" data-l="Added" data-c="a">${x.a}</td><td class="n c" data-l="Deducted" data-c="d">${x.d}</td><td class="n c" data-l="Ending balance" data-c="e">${x.e}</td><td data-l="Status" data-c="s"><span class="pill ${x.s}">${L[x.s]}</span></td><td class="qa" data-l="Quick entry"><div class="qe"><input class="qn" type="number" min="0" step="any" placeholder="Qty" aria-label="Quantity"><button class="primary" data-q="a">Add</button><button data-q="d">Deduct</button><button data-h title="View entries" aria-label="View entries">⋯</button></div></td></tr>`}
 function paint(tr,it){const x=info(it);tr.className="st-"+x.s;tr.querySelector('[data-c=a]').textContent=x.a;tr.querySelector('[data-c=d]').textContent=x.d;const e=tr.querySelector('[data-c=e]');e.textContent=x.e;e.style.color=x.e<0?"var(--out)":"";tr.querySelector('[data-c=s]').innerHTML=`<span class="pill ${x.s}">${L[x.s]}</span>`}
 function stats(){const v=items.filter(i=>i.sm<=m).map(info);const c=s=>v.filter(x=>x.s===s).length;
-  $("#stats").innerHTML=`<div class="stat"><b>${v.length}</b><span>Items</span></div><div class="stat"><b>${v.reduce((s,x)=>s+x.e,0).toLocaleString()}</b><span>Total ending balance, ${mname(m)}</span></div><div class="stat"><b>${v.reduce((s,x)=>s+x.a,0)}</b><span>Added in ${mname(m)}</span></div><div class="stat"><b>${v.reduce((s,x)=>s+x.d,0)}</b><span>Deducted in ${mname(m)}</span></div><div class="stat ${c("out")?"bad":""}"><b>${c("out")}</b><span>Out of stock</span></div><div class="stat ${c("soon")?"warn":""}"><b>${c("soon")}</b><span>Expire within 30 days</span></div><div class="stat ${c("exp")?"bad":""}"><b>${c("exp")}</b><span>Expired</span></div>`}
+  $("#stats").innerHTML=`<div class="stat"><b>${v.length}</b><span>Items</span></div><div class="stat"><b>${v.reduce((s,x)=>s+x.e,0).toLocaleString()}</b><span>Total ending balance, ${mname(m)}</span></div><div class="stat"><b>${v.reduce((s,x)=>s+x.a,0)}</b><span>Added in ${mname(m)}</span></div><div class="stat"><b>${v.reduce((s,x)=>s+x.d,0)}</b><span>Deducted in ${mname(m)}</span></div><div class="stat ${c("out")?"bad":""}"><b>${c("out")}</b><span>Out of stock</span></div><div class="stat ${c("low")?"warn":""}"><b>${c("low")}</b><span>Low stock</span></div><div class="stat ${c("soon")?"warn":""}"><b>${c("soon")}</b><span>Expire within 30 days</span></div><div class="stat ${c("exp")?"bad":""}"><b>${c("exp")}</b><span>Expired</span></div>`}
 function render(){syncDate();$("#q2").value=$("#q").value;
   $("#head").innerHTML=head();const q=$("#q").value.toLowerCase(),fs=$("#fs").value;
   const list=items.filter(i=>i.sm<=m);const shown=list.filter(i=>(!q||(i.name+i.brand).toLowerCase().includes(q))&&(!fs||info(i).s===fs));
@@ -1147,7 +1150,7 @@ function render(){syncDate();$("#q2").value=$("#q").value;
   if(!document.getElementById("types"))document.body.insertAdjacentHTML("beforeend",'<datalist id="types"><option>Piece<option>Box<option>Reams<option>Bottle</datalist>');
   stats()}
 $("#rows").addEventListener("change",e=>{const el=e.target,tr=el.closest("tr"),it=items.find(i=>i.id==tr.dataset.id),f=el.dataset.f;if(!it||!f||!admin)return;
-  setField(it,f,f==="open"?Math.min(1e6,Math.max(0,+el.value||0)):el.value);paint(tr,it);stats()});
+  setField(it,f,(f==="open"||f==="min")?Math.min(1e6,Math.max(0,+el.value||0)):el.value);paint(tr,it);stats()});
 $("#rows").addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;const tr=b.closest("tr"),it=items.find(i=>i.id==tr.dataset.id);if(!it)return;
   if(b.matches("[data-del]")){if(confirm("Delete "+(it.name||"this item")+" from all months?")){delItem(it);render()}}
   else if(b.dataset.q)quick(it,tr,b.dataset.q);else if(b.matches("[data-h]"))hist(it)});
@@ -1156,7 +1159,7 @@ $("#rows").addEventListener("keydown",e=>{if(e.key==="Enter"&&e.target.classList
 const ld=d=>d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
 const pdate=s=>{s=String(s||"").trim();if(!s)return"";if(/^\d{4}-\d\d-\d\d$/.test(s))return s;const d=new Date(s);return isNaN(d)?"":ld(d)};
 const pd=$("#pdlg"),pf=$("#pf"),lg=$("#ldlg"),lf=$("#lf");
-function addP(o){const it={id:uid(),name:String(o.name).trim(),brand:String(o.brand||"").trim(),open:Math.max(0,+o.open||0),type:String(o.type||"Piece").trim(),mfg:pdate(o.mfg),exp:pdate(o.exp),sm:m,t:{}};items.push(it);if(DB)col("items").doc(it.id).set(strip(it)).catch(werr);else saveL()}
+function addP(o){const it={id:uid(),name:String(o.name).trim(),brand:String(o.brand||"").trim(),open:Math.max(0,+o.open||0),min:Math.max(0,+o.min||0),type:String(o.type||"Piece").trim(),mfg:pdate(o.mfg),exp:pdate(o.exp),sm:m,t:{}};items.push(it);if(DB)col("items").doc(it.id).set(strip(it)).catch(werr);else saveL()}
 $("#add").onclick=()=>{pf.reset();$("#pm").textContent="Starts in "+mlabel(m);$("#q").value="";$("#fs").value="";pd.showModal();pf.elements.name.focus()};
 $("#pcancel").onclick=()=>pd.close();
 function savep(more){if(!pf.reportValidity())return;addP(Object.fromEntries(new FormData(pf)));save();render();if(more){pf.reset();pf.elements.name.focus()}else pd.close()}
@@ -1234,8 +1237,10 @@ const goYear=y=>{if(!admin||y<0||y>=NY)return;m=y*12+(m%12);render();replay()};
 $("#ysel").onchange=()=>goYear(+$("#ysel").value);$("#yp").onclick=()=>goYear(Math.floor(m/12)-1);$("#yn").onclick=()=>goYear(Math.floor(m/12)+1);
 function mstrip(){const el=$("#mstrip");if(!el)return;{const y=Math.floor(m/12);$("#ysel").value=y;$("#yp").disabled=y===0;$("#yn").disabled=y===NY-1}
   const now=new Date(),cur=(now.getFullYear()-Y0)*12+now.getMonth(),yb=Math.floor(m/12)*12;
-  el.innerHTML=MN.map((n,i)=>{const k=yb+i,tot=items.filter(it=>it.sm<=k).reduce((a,it)=>a+endBal(it,k),0);
-    return `<button type="button" role="tab" aria-selected="${k===m}" class="mchip${k===m?" on":""}${k===cur?" cur":""}" data-k="${k}" title="${n} ${myear(k)}: ending stock ${tot.toLocaleString()}"><b>${n.slice(0,3)}</b><span>${tot.toLocaleString()}</span></button>`}).join("");
+  el.innerHTML=MN.map((n,i)=>{const k=yb+i,vis=items.filter(it=>it.sm<=k),tot=vis.reduce((a,it)=>a+endBal(it,k),0),
+    moved=vis.reduce((a,it)=>{const[ad,de]=mt(it,k);return a+ad+de},0),
+    tip=moved?`${n} ${myear(k)}: ending stock ${tot.toLocaleString()} — stock was added or deducted this month`:`${n} ${myear(k)}: ending stock ${tot.toLocaleString()} — no stock added or deducted yet; carried over unchanged`;
+    return `<button type="button" role="tab" aria-selected="${k===m}" class="mchip${k===m?" on":""}${k===cur?" cur":""}${moved?"":" flat"}" data-k="${k}" title="${tip}"><b>${n.slice(0,3)}</b><span>${tot.toLocaleString()}</span>${moved?'<i class="mdot" aria-hidden="true"></i>':''}</button>`}).join("");
   if(lastM!==m){lastM=m;const on=el.querySelector(".on");if(on)el.scrollLeft=on.offsetLeft-(el.clientWidth-on.offsetWidth)/2}}
 $("#mstrip").onclick=e=>{const b=e.target.closest(".mchip");if(!b)return;m=+b.dataset.k;render();replay()};
 $("#mt").onclick=()=>{sbo=!sbo;sbApply()};
@@ -1243,7 +1248,7 @@ $("#side").addEventListener("click",e=>{if(mq.matches&&e.target.closest("button"
 const PN={};
 async function loadNames(ids){ids=[...new Set(ids.filter(x=>x&&!(x in PN)))];if(!ids.length||!usr)return;try{const P=await usr.profiles(ids);ids.forEach(i=>PN[i]=(P[i]&&P[i].name)||"Someone")}catch(e){ids.forEach(i=>PN[i]="Someone")}dash()}
 function dash(){const vis=items.filter(i=>i.sm<=m),inf=vis.map(i=>[i,info(i)]),tot=Math.max(1,inf.length),c=s=>inf.filter(o=>o[1].s===s).length;
-  const R=[["OK",c("ok"),"var(--ok)"],["Expires soon",c("soon"),"var(--low)"],["Expired",c("exp"),"var(--out)"],["Out of stock",c("out"),"#7c3aed"]];
+  const R=[["OK",c("ok"),"var(--ok)"],["Low stock",c("low"),"var(--stock,#1d4ed8)"],["Expires soon",c("soon"),"var(--low)"],["Expired",c("exp"),"var(--out)"],["Out of stock",c("out"),"#7c3aed"]];
   $("#pst").textContent=inf.length+" products";
   $("#cst").innerHTML=R.map(r=>`<div class="sr"><span>${r[0]}</span><div class="trk"><i style="width:${r[1]/tot*100}%;background:${r[2]}"></i></div><b>${r[1]}</b></div>`).join("");
   const days=[];for(let i=6;i>=0;i--){const d=new Date();d.setDate(d.getDate()-i);days.push(d)}
@@ -1253,7 +1258,7 @@ function dash(){const vis=items.filter(i=>i.sm<=m),inf=vis.map(i=>[i,info(i)]),t
   const rc=log.slice().sort((a,b)=>(b.at||0)-(a.at||0)||b.k-a.k||b.d-a.d).slice(0,8);
   $("#rec").innerHTML=rc.length?rc.map(e=>{const it=items.find(i=>i.id===e.item);return `<div class="ri"><div><b>${esc(it?it.name:"(deleted)")}</b><small class="${e.a?"up":"dn"}">${e.a?"Added "+e.a:"Deducted "+e.s}${it&&it.type?" "+esc(it.type):""}</small></div><div class="rt">${mname(e.k).slice(0,3)} ${e.d}<small>${esc(e.u||PN[e.by]||(DB?"":"You"))}</small></div></div>`}).join(""):'<p class="sub">No activity yet.</p>';
   loadNames(rc.map(e=>e.by));
-  const sev={exp:0,out:1,soon:2},at=inf.filter(o=>o[1].s!=="ok").sort((a,b)=>sev[a[1].s]-sev[b[1].s]).slice(0,8);
+  const sev={out:0,exp:1,low:2,soon:3},at=inf.filter(o=>o[1].s!=="ok").sort((a,b)=>sev[a[1].s]-sev[b[1].s]).slice(0,8);
   $("#att").innerHTML=at.length?at.map(o=>`<div class="ri"><div><b>${esc(o[0].name||"(no name)")}</b><small>${esc([o[0].brand,o[0].exp?"Exp "+o[0].exp:""].filter(Boolean).join(" · "))}</small></div><div class="rt"><span class="pill ${o[1].s}">${L[o[1].s]}</span></div></div>`).join(""):'<p class="sub">Nothing needs attention.</p>'}
 {const s0=stats;stats=()=>{s0();dash();mstrip();countUp()}}
 function who(){const n=sess?sess.name:"Not signed in",r=sess?(sess.role==="admin"?(cAdmin?"Admin":"Admin (view only here)"):"User"):"Sign in required";$("#un").textContent=$("#umn").textContent=n;$("#ur").textContent=r+(DB?"":" · this browser only");avPaint($("#av"),sess&&sess.u,n)}
