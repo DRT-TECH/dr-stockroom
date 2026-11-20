@@ -184,6 +184,8 @@ button.primary,button.on{background:var(--accent);border-color:var(--accent);col
 .tabs button{flex:none}
 .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin-bottom:12px}
 .stat{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:10px 13px}
+#rows input:disabled,#rows select:disabled{opacity:1;color:var(--ink);-webkit-text-fill-color:var(--ink);background:transparent;cursor:default}
+.stat.statf{cursor:pointer}.stat.statf:hover,.stat.statf:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
 .stat b{overflow-wrap:anywhere;display:block;font-size:21px;font-variant-numeric:tabular-nums}.stat span{color:var(--mute);font-size:12px}
 .stat.warn b{color:var(--low)}.stat.bad b{color:var(--out)}
 .bar{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px}
@@ -213,8 +215,17 @@ dialog{border:1px solid var(--line);border-radius:10px;background:var(--surface)
 dialog::backdrop{background:rgba(0,0,0,.45)}
 dialog h2{margin:0 0 2px;font-size:18px}
 dialog label{display:block;font-size:12px;color:var(--mute);margin-top:9px}
-dialog input,dialog select,dialog textarea{width:100%;margin-top:3px;background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:7px 9px}
+dialog input,dialog select,dialog textarea{width:100%;margin-top:3px;background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:7px 9px;transition:border-color .15s,box-shadow .15s}
+dialog input:focus,dialog select:focus,dialog textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 18%,transparent)}
 .r2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.dh{display:flex;align-items:center;gap:11px;margin-bottom:1px}
+.dh i{display:flex;align-items:center;justify-content:center;flex-shrink:0;width:36px;height:36px;border-radius:11px}
+.dh i svg{width:18px;height:18px}
+.dh b{font-size:17px;font-weight:700;color:var(--ink);letter-spacing:-.1px}
+.dh.add i{background:var(--okbg);color:var(--accent)}
+.dh.log i{background:var(--stockbg,#dbeafe);color:var(--stock,#1d4ed8)}
+.dh.imp i{background:var(--lowbg);color:var(--low)}
+dialog .sub{margin-top:5px;margin-bottom:2px}
 .acts{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:8px;margin-top:14px}
 details{margin-top:12px;font-size:13px}summary{cursor:pointer;color:var(--accent)}
 textarea{min-height:90px;font:12px monospace}
@@ -583,7 +594,7 @@ dialog{border-radius:14px}dialog::backdrop{background:rgba(5,12,24,.55)}
 @keyframes pulse{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--out) 45%,transparent)}70%,100%{box-shadow:0 0 0 8px transparent}}
 @keyframes shake{0%,100%{transform:translateX(0)}20%{transform:translateX(-7px)}40%{transform:translateX(6px)}60%{transform:translateX(-4px)}80%{transform:translateX(3px)}}
 /* smooth theme + press feel */
-body,.panel,.stat,.mcard,.side,.tw,th,td,dialog,input,select,.mchip{transition:background-color .35s,color .35s,border-color .35s}
+body,.panel,.stat,.mcard,.side,.tw,dialog,.mchip{transition:background-color .35s,color .35s,border-color .35s}
 button{transition:transform .12s,background-color .2s,border-color .2s,box-shadow .2s,color .2s}
 button:active:not(:disabled){transform:scale(.96)}
 button.primary:hover{box-shadow:0 6px 16px color-mix(in srgb,var(--accent) 38%,transparent)}
@@ -1082,7 +1093,7 @@ body[data-pg=users] .mc>:is(.mcard,.stats,.g2,.mp,.note),body[data-pg=report] .m
 <div class="af"><button type="button" id="ac">Close</button></div>
 </dialog>
 <dialog id="pdlg"><form id="pf">
-  <h2>New item</h2><div class="sub" id="pm"></div>
+  <div class="dh add"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></i><b>New item</b></div><div class="sub" id="pm"></div>
   <label>Item<input name="name" required></label>
   <div class="r2"><label>Brand<input name="brand"></label><label>Quantity<input name="open" type="number" min="0" max="1000000" step="any" value="0" required></label></div>
   <div class="r2"><label>Quantity type<select name="type"><option selected>Piece</option><option>Box</option><option>Reams</option><option>Bottle</option></select></label><label>Min qty for low-stock alert<input name="min" type="number" min="0" max="1000000" step="any" value="0"></label></div>
@@ -1091,7 +1102,7 @@ body[data-pg=users] .mc>:is(.mcard,.stats,.g2,.mp,.note),body[data-pg=report] .m
   
 </form></dialog>
 <dialog id="ldlg"><form id="lf">
-  <h2>Stock in / out</h2><div class="sub">Record an addition or deduction for a single day.</div>
+  <div class="dh log"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 16l-4 4-4-4M17 20V4M3 8l4-4 4 4M7 4v16"/></svg></i><b>Stock in / out</b></div><div class="sub">Record an addition or deduction for a single day.</div>
   <label>Item<select name="id" id="lsel" required></select></label>
   <div class="r2"><label>Action<select name="act"><option value="a">Add stock</option><option value="d">Deduct stock</option></select></label><label>Quantity<input name="q" type="number" min="0.01" step="any" required></label></div>
   <label>Date<input name="date" type="date" required></label>
@@ -1142,7 +1153,11 @@ function row(it,i){const x=info(it);
   return `<tr data-id="${it.id}" class="st-${x.s}"><td class="s1 c" data-l="No."><span>${i+1}</span></td><td class="s2" data-l="Item"><input data-f="name" value="${esc(it.name)}" placeholder="Item name" aria-label="Item name"></td><td class="br" data-l="Brand"><input data-f="brand" value="${esc(it.brand)}" placeholder="Brand" aria-label="Brand"></td><td class="qo c" data-l="Opening qty"><input type="number" min="0" step="any" data-f="open" value="${x.o}" aria-label="Opening quantity" ${m===it.sm?"":"disabled title=\"Carried over from previous month\""}></td><td class="mq c" data-l="Min qty"><input type="number" min="0" step="any" data-f="min" value="${it.min||0}" aria-label="Minimum quantity for low-stock alert" title="Alert when ending balance falls to this number or below. 0 = no alert."></td><td class="ty" data-l="Type">${typeSel(it.type)}</td><td class="dt" data-l="MFG date"><input type="date" data-f="mfg" value="${esc(it.mfg)}" aria-label="MFG date"></td><td class="dt" data-l="Expiration date"><input type="date" data-f="exp" value="${esc(it.exp)}" aria-label="Expiration date"></td><td class="n ad c" data-l="Added" data-c="a">${x.a}</td><td class="n c" data-l="Deducted" data-c="d">${x.d}</td><td class="n c" data-l="Ending balance" data-c="e">${x.e}</td><td data-l="Status" data-c="s"><span class="pill ${x.s}">${L[x.s]}</span></td><td class="qa" data-l="Quick entry"><div class="qe"><input class="qn" type="number" min="0" step="any" placeholder="Qty" aria-label="Quantity"><button class="primary" data-q="a">Add</button><button data-q="d">Deduct</button><button data-h title="View entries" aria-label="View entries">⋯</button><button data-del title="Delete item" aria-label="Delete item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2m3 0-1 14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2L4 6"/></svg></button></div></td></tr>`}
 function paint(tr,it){const x=info(it);tr.className="st-"+x.s;tr.querySelector('[data-c=a]').textContent=x.a;tr.querySelector('[data-c=d]').textContent=x.d;const e=tr.querySelector('[data-c=e]');e.textContent=x.e;e.style.color=x.e<0?"var(--out)":"";tr.querySelector('[data-c=s]').innerHTML=`<span class="pill ${x.s}">${L[x.s]}</span>`}
 function stats(){const v=items.filter(i=>i.sm<=m).map(info);const c=s=>v.filter(x=>x.s===s).length;
-  $("#stats").innerHTML=`<div class="stat"><b>${v.length}</b><span>Items</span></div><div class="stat"><b>${v.reduce((s,x)=>s+x.e,0).toLocaleString()}</b><span>Total ending balance, ${mname(m)}</span></div><div class="stat"><b>${v.reduce((s,x)=>s+x.a,0)}</b><span>Added in ${mname(m)}</span></div><div class="stat"><b>${v.reduce((s,x)=>s+x.d,0)}</b><span>Deducted in ${mname(m)}</span></div><div class="stat ${c("out")?"bad":""}"><b>${c("out")}</b><span>Out of stock</span></div><div class="stat ${c("low")?"warn":""}"><b>${c("low")}</b><span>Low stock</span></div><div class="stat ${c("soon")?"warn":""}"><b>${c("soon")}</b><span>Expire within 30 days</span></div><div class="stat ${c("exp")?"bad":""}"><b>${c("exp")}</b><span>Expired</span></div>`}
+  const tile=(n,label,cls,filt)=>`<div class="stat${cls?" "+cls:""}${filt?" statf":""}"${filt?` data-filter="${filt}" role="button" tabindex="0" title="Show ${label.toLowerCase()} in the list below"`:""}><b>${n}</b><span>${label}</span></div>`;
+  $("#stats").innerHTML=tile(v.length,"Items","","")+tile(v.reduce((s,x)=>s+x.e,0).toLocaleString(),"Total ending balance, "+mname(m),"","")+tile(v.reduce((s,x)=>s+x.a,0),"Added in "+mname(m),"","")+tile(v.reduce((s,x)=>s+x.d,0),"Deducted in "+mname(m),"","")+tile(c("out"),"Out of stock",c("out")?"bad":"","out")+tile(c("low"),"Low stock",c("low")?"warn":"","low")+tile(c("soon"),"Expire within 30 days",c("soon")?"warn":"","soon")+tile(c("exp"),"Expired",c("exp")?"bad":"","exp")}
+function goFilter(f){$("#fs").value=f;render();const t=$("#rows");if(t)t.scrollIntoView({behavior:"smooth",block:"start"})}
+$("#stats").addEventListener("click",e=>{const t=e.target.closest("[data-filter]");if(t)goFilter(t.dataset.filter)});
+$("#stats").addEventListener("keydown",e=>{if((e.key==="Enter"||e.key===" ")&&e.target.closest("[data-filter]")){e.preventDefault();goFilter(e.target.closest("[data-filter]").dataset.filter)}});
 function render(){syncDate();$("#q2").value=$("#q").value;
   $("#head").innerHTML=head();const q=$("#q").value.toLowerCase(),fs=$("#fs").value;
   const list=items.filter(i=>i.sm<=m);const shown=list.filter(i=>(!q||(i.name+i.brand).toLowerCase().includes(q))&&(!fs||info(i).s===fs));
@@ -1273,7 +1288,7 @@ const PG={ov:["Dashboard","Stock levels, expiries and activity at a glance.","#o
 function page(p){if(p==="ov"||p==="prod")lastMain=p;document.body.dataset.pg=p;replay();Object.keys(PG).forEach(k=>{const b=$(PG[k][2]);if(b)b.classList.toggle("on",k===p)});$("#pgh").textContent=PG[p][0];$("#pgs").textContent=PG[p][1];window.scrollTo(0,0)}
 function asPage(el,name){Object.defineProperty(el,"open",{get:()=>document.body.dataset.pg===name});el.showModal=()=>page(name);el.close=()=>{if(document.body.dataset.pg===name)page(lastMain)};return el}
 page("ov");$("#ov").onclick=()=>page("ov");$("#pnav").onclick=()=>page("prod");
-["#add","#ip","#log"].forEach(x=>$(x).addEventListener("click",()=>page("prod")));
+["#add","#ip","#log"].forEach(x=>$(x).addEventListener("click",()=>{if(document.body.dataset.pg!=="prod")page("prod")}));
 $("#q2").oninput=()=>{$("#q").value=$("#q2").value;page("prod");render()};
 function refresh(){window.rpLive&&window.rpLive();const a=document.activeElement;if(a&&a.closest&&a.closest("#rows")){document.querySelectorAll("#rows tr").forEach(tr=>{const it=items.find(i=>i.id==tr.dataset.id);if(it)paint(tr,it)});stats()}else render()}
 function restoreUI(){}
@@ -1301,7 +1316,8 @@ document.body.insertAdjacentHTML("beforeend",`<dialog id="rdlg" style="width:min
 <div class="r2"><span><button type="button" id="rsa">Select all shown</button> <button type="button" id="rsn">Clear</button></span><button id="r3" class="rb"></button></div></div>
 <div class="rbox"><b>Everything</b><button id="r2" class="rb dng"></button></div>
 <div class="acts"><button id="r0">Close</button></div></dialog>
-<dialog id="idlg" style="width:min(580px,94vw)"><h2>Import from Excel</h2>
+<dialog id="idlg" style="width:min(580px,94vw)">
+<div class="dh imp"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 15V3m0 0L8 7m4-4l4 4M4 15v4a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-4"/></svg></i><b>Import from Excel</b></div>
 <ol class="steps"><li><b>Download the template</b> and fill it in, one product per row.</li><li><b>Choose the file.</b> You will see a check of every row before anything is added.</li></ol>
 <table style="min-width:0;width:100%"><thead><tr><th>Column</th><th>What to enter</th><th>Example</th></tr></thead><tbody>
 <tr><td>Item</td><td>Product name (required)</td><td>Bond paper A4</td></tr>
