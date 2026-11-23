@@ -211,22 +211,24 @@ td.n{text-align:right;font-variant-numeric:tabular-nums;font-weight:600;min-widt
 .note{color:var(--mute);font-size:12px;margin-top:10px}
 body.na #rdlg .rbox:not(.rpick),body.na #rdlg>p.sub,body.na #rdlg>label,body.na #dlt,body.na #imp,body.na [data-del],body.na [data-rm]{display:none}body.ro .qe,body.ro #log{display:none}
 .qe{display:flex;gap:4px;align-items:center}td input.qn{width:76px;border-color:var(--line)}
-dialog{border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink);padding:18px;width:min(440px,94vw)}
-dialog::backdrop{background:rgba(0,0,0,.45)}
-dialog h2{margin:0 0 2px;font-size:18px}
-dialog label{display:block;font-size:12px;color:var(--mute);margin-top:9px}
-dialog input,dialog select,dialog textarea{width:100%;margin-top:3px;background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:7px 9px;transition:border-color .15s,box-shadow .15s}
-dialog input:focus,dialog select:focus,dialog textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 18%,transparent)}
-.r2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.dh{display:flex;align-items:center;gap:11px;margin-bottom:1px}
-.dh i{display:flex;align-items:center;justify-content:center;flex-shrink:0;width:36px;height:36px;border-radius:11px}
-.dh i svg{width:18px;height:18px}
-.dh b{font-size:17px;font-weight:700;color:var(--ink);letter-spacing:-.1px}
+dialog{border:1px solid var(--line);border-radius:16px;background:var(--surface);color:var(--ink);padding:30px 34px;width:min(600px,94vw);box-shadow:0 24px 60px rgba(0,0,0,.22)}
+dialog::backdrop{background:rgba(5,12,24,.6);backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px)}
+dialog h2,.formpg h2{margin:0 0 2px;font-size:18px}
+dialog label,.formpg label{display:block;font-size:13px;font-weight:600;color:var(--mute);margin-top:16px}
+dialog input,dialog select,dialog textarea,.formpg input,.formpg select,.formpg textarea{width:100%;margin-top:7px;background:var(--bg);border:1.5px solid var(--line);border-radius:9px;padding:12px 14px;font-size:15px;transition:border-color .15s,box-shadow .15s}
+dialog input:focus,dialog select:focus,dialog textarea:focus,.formpg input:focus,.formpg select:focus,.formpg textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 4px color-mix(in srgb,var(--accent) 16%,transparent)}
+.r2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.dh{display:flex;align-items:center;gap:13px;margin-bottom:1px}
+.dh i{display:flex;align-items:center;justify-content:center;flex-shrink:0;width:44px;height:44px;border-radius:13px}
+.dh i svg{width:21px;height:21px}
+.dh b{font-size:20px;font-weight:700;color:var(--ink);letter-spacing:-.2px}
 .dh.add i{background:var(--okbg);color:var(--accent)}
 .dh.log i{background:var(--stockbg,#dbeafe);color:var(--stock,#1d4ed8)}
 .dh.imp i{background:var(--lowbg);color:var(--low)}
-dialog .sub{margin-top:5px;margin-bottom:2px}
-.acts{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:8px;margin-top:14px}
+dialog .sub,.formpg .sub{margin-top:6px;margin-bottom:4px;font-size:14px}
+.acts{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:10px;margin-top:22px}
+dialog .acts button,.formpg .acts button{padding:11px 18px;font-size:14.5px;border-radius:9px}
+dialog .acts button.primary,.formpg .acts button.primary{font-weight:700}
 details{margin-top:12px;font-size:13px}summary{cursor:pointer;color:var(--accent)}
 textarea{min-height:90px;font:12px monospace}
 .hbtns{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
@@ -491,7 +493,7 @@ body{font-family:"Public Sans","Segoe UI",system-ui,-apple-system,Roboto,sans-se
 h1,h2,h3,.stat b,.panel h3,.mchip b{font-family:"Bricolage Grotesque","Public Sans",system-ui,sans-serif}
 button,input,select{border-radius:8px}
 button.primary{font-weight:600}
-dialog{border-radius:14px}dialog::backdrop{background:rgba(5,12,24,.55)}
+dialog{border-radius:14px}dialog::backdrop{background:rgba(2,6,14,.7);backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px)}
 /* hero band */
 .tb{position:static;background:var(--hd);color:#fff;border-bottom:0;padding:22px 24px 60px;align-items:center;gap:14px}
 .ht{min-width:0}
@@ -582,7 +584,7 @@ dialog{border-radius:14px}dialog::backdrop{background:rgba(5,12,24,.55)}
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
 @keyframes slideIn{from{opacity:0;transform:translateX(44px)}to{opacity:1;transform:none}}
 @keyframes slideL{from{opacity:0;transform:translateX(-28px)}to{opacity:1;transform:none}}
-@keyframes dlgIn{from{opacity:0;transform:translateY(14px) scale(.96)}to{opacity:1;transform:none}}
+@keyframes dlgIn{from{opacity:0;transform:translateY(34px) scale(.9)}to{opacity:1;transform:none}}
 @keyframes toastIn{from{opacity:0;transform:translate(-50%,14px)}to{opacity:1;transform:translate(-50%,0)}}
 @keyframes growX{from{transform:scaleX(0)}to{transform:scaleX(1)}}
 @keyframes growY{from{transform:scaleY(0)}to{transform:scaleY(1)}}
@@ -625,8 +627,8 @@ tbody tr{transition:background-color .2s}
 .side .nav .ic{transition:transform .25s,background-color .2s,color .2s}
 .side .nav:hover .ic{transform:scale(1.1) rotate(-5deg)}
 /* dialogs + toast */
-dialog[open]{animation:dlgIn .24s cubic-bezier(.2,.8,.2,1)}
-dialog[open]::backdrop{animation:fadeIn .24s ease}
+dialog[open]{animation:dlgIn .32s cubic-bezier(.16,1,.3,1)}
+dialog[open]::backdrop{animation:fadeIn .28s ease}
 #toast:not([hidden]){animation:toastIn .3s cubic-bezier(.2,.8,.2,1)}
 .ar{transition:border-color .2s,transform .2s,box-shadow .2s}.ar:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(10,20,40,.1)}
 .afm:not([hidden]){animation:fadeUp .3s ease}
@@ -813,8 +815,38 @@ dialog[open]::backdrop{animation:fadeIn .24s ease}
 .ap.a{color:var(--ok);background:color-mix(in srgb,var(--ok) 14%,transparent)}.ap.d{color:var(--out);background:color-mix(in srgb,var(--out) 14%,transparent)}
 /* ===== Pages instead of pop-ups: User accounts, Daily report, Recent activity ===== */
 .pgmod{display:none}
-body[data-pg=users] #usdlg,body[data-pg=report] #rpdlg,body[data-pg=activity] #acdlg{display:block}
-body[data-pg=users] .mc>:is(.mcard,.stats,.g2,.mp,.note),body[data-pg=report] .mc>:is(.mcard,.stats,.g2,.mp,.note),body[data-pg=activity] .mc>:is(.mcard,.stats,.g2,.mp,.note){display:none}
+body[data-pg=users] #usdlg,body[data-pg=report] #rpdlg,body[data-pg=activity] #acdlg,body[data-pg=additem] #pdlg,body[data-pg=stockio] #ldlg,body[data-pg=import] #idlg{display:block}
+body[data-pg=users] .mc>:is(.mcard,.stats,.g2,.mp,.note),body[data-pg=report] .mc>:is(.mcard,.stats,.g2,.mp,.note),body[data-pg=activity] .mc>:is(.mcard,.stats,.g2,.mp,.note),body[data-pg=additem] .mc>:is(.mcard,.stats,.g2,.mp,.note),body[data-pg=stockio] .mc>:is(.mcard,.stats,.g2,.mp,.note),body[data-pg=import] .mc>:is(.mcard,.stats,.g2,.mp,.note){display:none}
+.formpg{padding:26px 30px}
+.formpg>form{max-width:640px;margin:0 auto}
+.formpg>.pgb{max-width:760px;margin:0 auto}
+.impgrid{display:grid;grid-template-columns:1.1fr 1fr;gap:28px;align-items:stretch;margin:20px 0 18px}
+@media (max-width:760px){.impgrid{grid-template-columns:1fr}}
+.impsteps{display:flex;flex-direction:column;gap:20px;justify-content:center;padding:4px 0}
+.istep{display:flex;gap:14px;align-items:flex-start;position:relative}
+.istep:first-child::after{content:"";position:absolute;left:15px;top:34px;width:2px;height:22px;background:var(--line)}
+.inum{flex-shrink:0;width:32px;height:32px;border-radius:50%;background:var(--lowbg);color:var(--low);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px}
+.istep b{display:block;font-size:14.5px;color:var(--ink)}
+.istep p{margin:3px 0 0;font-size:13px;color:var(--mute)}
+button.impdrop{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px;text-align:center;border:2px dashed var(--line);border-radius:14px;padding:26px 18px;background:var(--bg);cursor:pointer;transition:border-color .15s,background-color .15s;color:inherit;font:inherit;width:100%;min-height:140px}
+button.impdrop svg{width:28px;height:28px;color:var(--low)}
+button.impdrop b{font-size:14.5px;color:var(--ink)}
+button.impdrop span{font-size:12.5px;color:var(--mute)}
+button.impdrop:hover,button.impdrop.drag{border-color:var(--low);background:var(--lowbg)}
+.impref{margin:14px 0 18px}
+.impref summary{cursor:pointer;font-weight:600;font-size:13.5px;color:var(--accent)}
+.impref table{margin-top:12px;font-size:13px}
+.fgh{margin:0 0 12px;padding-bottom:9px;border-bottom:1px solid var(--line);font-size:13.5px;font-weight:700;color:var(--ink)}
+.segcontrol{display:flex;margin-top:7px;border:1.5px solid var(--line);border-radius:9px;overflow:hidden}
+.formpg .seg{position:relative;flex:1;display:flex;align-items:center;justify-content:center;gap:7px;padding:11px 10px;cursor:pointer;font-size:14px;font-weight:600;color:var(--mute);background:var(--bg);transition:background-color .15s,color .15s;margin:0}
+.seg+.seg{border-left:1.5px solid var(--line)}
+.seg svg{width:15px;height:15px;flex-shrink:0}
+.seg input{position:absolute;opacity:0;width:1px;height:1px;pointer-events:none}
+.formpg .seg:has(input:checked){background:var(--okbg);color:var(--accent)}
+.formpg .seg-ded:has(input:checked){background:var(--outbg);color:var(--out)}
+.seg:has(input:focus-visible){outline:2px solid var(--accent);outline-offset:-2px}
+.backlink{background:none;border:none;color:var(--accent);font-weight:600;font-size:13.5px;padding:0;margin-bottom:14px;display:inline-flex;align-items:center;gap:5px;cursor:pointer}
+.backlink:hover{text-decoration:underline}
 .pgmod.sdlg.udlg{width:auto;height:auto;max-height:none;overflow:visible;padding:16px 18px;margin-bottom:16px}
 .pgmod .sh,.pgmod .sx{display:none}
 .pgmod.udlg .sb{display:block;padding:0;overflow:visible;min-height:0}
@@ -948,6 +980,29 @@ body[data-pg=users] .mc>:is(.mcard,.stats,.g2,.mp,.note),body[data-pg=report] .m
   .lc input{font-size:16px}
 }
 </style>
+<style id="design-e">/* Design E: blue accent, roomier fields, live summary card (New item, Stock in/out, Import) */
+.formpg{--accent:#1d4ed8;--on:#fff;--okbg:#e8f0ff}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .formpg{--accent:#60a5fa;--on:#0b1220;--okbg:#14264d}}
+:root[data-theme="dark"] .formpg{--accent:#60a5fa;--on:#0b1220;--okbg:#14264d}
+.formpg input,.formpg select{border:1px solid var(--line);border-radius:12px;padding:0 14px;min-height:46px}
+.formpg .dh i{width:48px;height:48px;border-radius:14px}
+.formpg .dh b{font-size:30px;letter-spacing:-.5px}
+.formpg .fgh{border-bottom:0;padding-bottom:0;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+.formpg .acts button{min-height:46px;padding:0 22px;border-radius:12px;font-weight:600}
+.formpg .acts #pmore{background:transparent;border:1px solid var(--accent);color:var(--accent)}
+.formpg .acts button.primary{background:var(--accent)!important;border-color:var(--accent)!important;color:var(--on)!important}
+#pdlg>form{max-width:1000px;display:grid;grid-template-columns:minmax(0,1fr) 340px;column-gap:44px}
+#pdlg>form>*{grid-column:1}
+#pdlg>form>.sumcard{grid-column:2;grid-row:1/span 5;align-self:start;position:sticky;top:16px}
+.sumcard{background:var(--head);border-radius:16px;padding:24px}
+.sumh{margin:0 0 14px;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+.sumbox{background:var(--surface);border-radius:14px;padding:20px;box-shadow:0 4px 18px rgba(29,78,216,.10)}
+.sumbox>b{display:block;font-size:19px;color:var(--ink);overflow-wrap:anywhere}
+.sumbox>span{display:block;margin:2px 0 10px;font-size:14px;color:var(--mute);overflow-wrap:anywhere}
+.sr{display:flex;justify-content:space-between;gap:12px;padding:11px 0;border-bottom:1px solid var(--line);font-size:14px}
+.sr span{color:var(--mute)}.sr b{color:var(--ink)}.sr:last-child{border-bottom:0}
+@media (max-width:900px){#pdlg>form{grid-template-columns:1fr}#pdlg>form>.sumcard{grid-column:1;grid-row:auto}}
+</style>
 </head>
 <body>
 <div id="ld" role="status" aria-live="polite"><div class="ldsh"><i class="bx b1"></i><i class="bx b2"></i><i class="bx b3"></i><i class="bx b4"></i><i class="bx b5"></i></div><p id="ldtx">Loading...</p></div>
@@ -1018,6 +1073,43 @@ body[data-pg=users] .mc>:is(.mcard,.stats,.g2,.mp,.note),body[data-pg=report] .m
   <div class="utool"><input id="ac_q" type="search" placeholder="Search item, brand or staff" aria-label="Search activity"><select id="ac_f" aria-label="Action"><option value="">All actions</option><option value="a">Added</option><option value="d">Deducted</option></select></div>
   <div class="utw" id="ab"></div>
 </div></section>
+<section id="pdlg" class="panel pgmod formpg"><form id="pf">
+  <button type="button" class="backlink" id="pback">&larr; Back to All items</button>
+  <div class="dh add"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></i><b>New item</b></div><div class="sub" id="pm"></div>
+  <div class="impgrid" style="margin-top:18px;align-items:start">
+    <div><p class="fgh">Item details</p>
+      <label style="margin-top:0">Item<input name="name" required></label>
+      <label>Brand<input name="brand"></label>
+      <label>Quantity type<select name="type"><option selected>Piece</option><option>Box</option><option>Reams</option><option>Bottle</option></select></label>
+    </div>
+    <div><p class="fgh">Stock &amp; alerts</p>
+      <label style="margin-top:0">Opening quantity<input name="open" type="number" min="0" max="1000000" step="any" value="0" required></label>
+      <label>Min qty for low-stock alert<input name="min" type="number" min="0" max="1000000" step="any" value="0"></label>
+      <div class="r2"><label>MFG date<input name="mfg" type="date"></label><label>Expiration date<input name="exp" type="date"></label></div>
+    </div>
+  </div>
+  <div class="acts"><button type="button" id="pcancel">Close</button><button type="button" id="pmore">Save and add another</button><button type="button" class="primary" id="psave">Save product</button></div>
+<aside class="sumcard" aria-live="polite"><p class="sumh">Summary</p><div class="sumbox"><b id="s_name">New item</b><span id="s_brand">Brand not set</span>
+<div class="sr"><span>Quantity type</span><b id="s_type">Piece</b></div>
+<div class="sr"><span>Opening quantity</span><b id="s_open">0</b></div>
+<div class="sr"><span>Low-stock alert at</span><b id="s_min">0</b></div>
+<div class="sr"><span>MFG date</span><b id="s_mfg">Not set</b></div>
+<div class="sr"><span>Expiration date</span><b id="s_exp">Not set</b></div></div></aside>
+</form></section>
+<section id="ldlg" class="panel pgmod formpg"><form id="lf">
+  <button type="button" class="backlink" id="lback">&larr; Back to All items</button>
+  <div class="dh log"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 16l-4 4-4-4M17 20V4M3 8l4-4 4 4M7 4v16"/></svg></i><b>Stock in / out</b></div><div class="sub">Record an addition or deduction for a single day.</div>
+  <label>Item<select name="id" id="lsel" required></select></label>
+  <div class="r2">
+    <div><label>Action</label><div class="segcontrol">
+      <label class="seg seg-add"><input type="radio" name="act" value="a" checked><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>Add stock</span></label>
+      <label class="seg seg-ded"><input type="radio" name="act" value="d"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M5 12h14"/></svg>Deduct stock</span></label>
+    </div></div>
+    <label>Quantity<input name="q" type="number" min="0.01" step="any" required></label>
+  </div>
+  <label>Date<input name="date" type="date" required></label>
+  <div class="acts"><button type="button" id="lcancel">Cancel</button><button type="submit" class="primary">Save entry</button></div>
+</form></section>
 <p class="note">Type a quantity on an item row and select Add or Deduct; it is recorded on the entry date. Opening balance carries over from the previous month. Use Daily summary to download a PDF or Excel copy of what went out.</p>
 </div>
 <footer class="foot" id="foot"><img id="flogo" alt="" width="40" height="40"><div class="ftx"><b>Divine Rays Stockroom</b><span id="fcopy"></span></div><div class="fch"><div class="fcr"><div class="cmark"><svg viewBox="0 0 24 24"><path d="M8 8l-4 4 4 4M16 8l4 4-4 4M13.5 5l-3 14"/></svg></div><div class="ctx"><span class="cby">Crafted by</span><b>DR IT Tech</b><i>Count smart. Stock strong.</i></div></div><span class="fc v">v1.0.0</span></div></footer>
@@ -1092,22 +1184,6 @@ body[data-pg=users] .mc>:is(.mcard,.stats,.g2,.mp,.note),body[data-pg=report] .m
 </div>
 <div class="af"><button type="button" id="ac">Close</button></div>
 </dialog>
-<dialog id="pdlg"><form id="pf">
-  <div class="dh add"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></i><b>New item</b></div><div class="sub" id="pm"></div>
-  <label>Item<input name="name" required></label>
-  <div class="r2"><label>Brand<input name="brand"></label><label>Quantity<input name="open" type="number" min="0" max="1000000" step="any" value="0" required></label></div>
-  <div class="r2"><label>Quantity type<select name="type"><option selected>Piece</option><option>Box</option><option>Reams</option><option>Bottle</option></select></label><label>Min qty for low-stock alert<input name="min" type="number" min="0" max="1000000" step="any" value="0"></label></div>
-  <div class="r2"><label>MFG date<input name="mfg" type="date"></label><label>Expiration date<input name="exp" type="date"></label></div>
-  <div class="acts"><button type="button" id="pcancel">Close</button><button type="button" id="pmore">Save and add another</button><button type="button" class="primary" id="psave">Save product</button></div>
-  
-</form></dialog>
-<dialog id="ldlg"><form id="lf">
-  <div class="dh log"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 16l-4 4-4-4M17 20V4M3 8l4-4 4 4M7 4v16"/></svg></i><b>Stock in / out</b></div><div class="sub">Record an addition or deduction for a single day.</div>
-  <label>Item<select name="id" id="lsel" required></select></label>
-  <div class="r2"><label>Action<select name="act"><option value="a">Add stock</option><option value="d">Deduct stock</option></select></label><label>Quantity<input name="q" type="number" min="0.01" step="any" required></label></div>
-  <label>Date<input name="date" type="date" required></label>
-  <div class="acts"><button type="button" id="lcancel">Cancel</button><button type="submit" class="primary">Save entry</button></div>
-</form></dialog>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <script>
 const KEY="stockroom-2026",MN=["January","February","March","April","May","June","July","August","September","October","November","December"],Y0=2026,NY=15,NM=NY*12;
@@ -1173,7 +1249,8 @@ $("#rows").addEventListener("keydown",e=>{if(e.key==="Enter"&&e.target.classList
 ["#q","#fs"].forEach(s=>$(s).addEventListener("input",render));
 const ld=d=>d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
 const pdate=s=>{s=String(s||"").trim();if(!s)return"";if(/^\d{4}-\d\d-\d\d$/.test(s))return s;const d=new Date(s);return isNaN(d)?"":ld(d)};
-const pd=$("#pdlg"),pf=$("#pf"),lg=$("#ldlg"),lf=$("#lf");
+const pd=asPage($("#pdlg"),"additem"),pf=$("#pf"),lg=asPage($("#ldlg"),"stockio"),lf=$("#lf");
+$("#pback").onclick=()=>pd.close();$("#lback").onclick=()=>lg.close();
 function addP(o){const it={id:uid(),name:String(o.name).trim(),brand:String(o.brand||"").trim(),open:Math.max(0,+o.open||0),min:Math.max(0,+o.min||0),type:String(o.type||"Piece").trim(),mfg:pdate(o.mfg),exp:pdate(o.exp),sm:m,t:{}};items.push(it);if(DB)col("items").doc(it.id).set(strip(it)).catch(werr);else saveL()}
 $("#add").onclick=()=>{pf.reset();$("#pm").textContent="Starts in "+mlabel(m);$("#q").value="";$("#fs").value="";pd.showModal();pf.elements.name.focus()};
 $("#pcancel").onclick=()=>pd.close();
@@ -1244,10 +1321,11 @@ function preview(res,src){const{ok,bad}=res;if(!ok.length&&!bad.length){alert("N
     +(bad.length?`<table style="min-width:0;width:100%"><thead><tr><th>Row</th><th>Item</th><th>Reason</th></tr></thead><tbody>${bad.slice(0,40).map(b=>`<tr><td>${b.n}</td><td>${esc(b.name.slice(0,28))}</td><td>${b.err}</td></tr>`).join("")}</tbody></table>${bad.length>40?`<p class="sub">And ${bad.length-40} more rejected rows.</p>`:""}`:"");
   $("#vok").disabled=!ok.length;$("#vok").textContent="Import "+ok.length+" valid";vcb=()=>{ok.forEach(addP);save();render();toast(ok.length+" products added")};$("#vdlg").showModal()}
 document.body.insertAdjacentHTML("beforeend",'<dialog id="vdlg" style="width:min(560px,94vw)"><h2 id="vt"></h2><div id="vb" style="max-height:55vh;overflow:auto"></div><div class="acts"><button id="vc">Cancel</button><button class="primary" id="vok">Import</button></div></dialog>');
-$("#vc").onclick=()=>$("#vdlg").close();$("#vok").onclick=()=>{$("#vdlg").close();if(vcb)vcb()};
-$("#pfile").onchange=async e=>{const f=e.target.files[0];e.target.value="";if(!f||!canW)return;if(typeof XLSX==="undefined"){alert("Excel import needs the Excel library. Use the paste box in Import products instead.");return}
+$("#vc").onclick=()=>$("#vdlg").close();$("#vok").onclick=()=>{$("#vdlg").close();if(vcb)vcb();$("#idlg").close()};
+async function handleImportFile(f){if(!f||!canW)return;if(typeof XLSX==="undefined"){alert("Excel import needs the Excel library. Use the paste box in Import products instead.");return}
   try{const wb=XLSX.read(await f.arrayBuffer(),{type:"array",cellDates:true});preview(vet(XLSX.utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]],{header:1,raw:true,defval:""})),"products from "+f.name)}
-  catch(err){alert("Could not read that file. Use an .xlsx or .csv file.")}};
+  catch(err){alert("Could not read that file. Use an .xlsx or .csv file.")}}
+$("#pfile").onchange=e=>{const f=e.target.files[0];e.target.value="";handleImportFile(f)};
 const mq=matchMedia("(max-width:800px)");let sbo=false;const sbApply=()=>{document.body.classList.toggle("sbo",sbo)};sbApply();
 const endBal=(it,k)=>opening(it,k)+mt(it,k)[0]-mt(it,k)[1];
 let lastM=-1;
@@ -1284,11 +1362,10 @@ function who(){const n=sess?sess.name:"Not signed in",r=sess?(sess.role==="admin
 let _pt;function replay(){const b=document.body;b.classList.remove("pgin");void b.offsetWidth;b.classList.add("pgin");clearTimeout(_pt);_pt=setTimeout(()=>b.classList.remove("pgin"),1500)}
 let _sv=[];function countUp(){if(matchMedia("(prefers-reduced-motion:reduce)").matches)return;document.querySelectorAll("#stats .stat b").forEach((el,i)=>{const t=el.textContent,n=parseFloat(t.replace(/,/g,""));if(!isFinite(n))return;const from=_sv[i]!=null?_sv[i]:0;_sv[i]=n;if(from===n)return;const st=performance.now(),d=800,f=now=>{const k=Math.min(1,(now-st)/d),e=1-Math.pow(1-k,3);if(k<1){const v=from+(n-from)*e;el.textContent=Math.round(v).toLocaleString();requestAnimationFrame(f)}else el.textContent=t};requestAnimationFrame(f)})}
 let lastMain="ov";
-const PG={ov:["Dashboard","Stock levels, expiries and activity at a glance.","#ov"],prod:["All items","Find any item and record what comes in or goes out.","#pnav"],users:["Team","Manage who can use the Stockroom, what they can do, and what they have recorded.","#acc"],report:["Daily summary","Products taken out of the stockroom. Pick the dates, then download a PDF or Excel copy.","#rpt"],activity:["History","Every add and deduct, newest first.","#act"]};
+const PG={ov:["Dashboard","Stock levels, expiries and activity at a glance.","#ov"],prod:["All items","Find any item and record what comes in or goes out.","#pnav"],users:["Team","Manage who can use the Stockroom, what they can do, and what they have recorded.","#acc"],report:["Daily summary","Products taken out of the stockroom. Pick the dates, then download a PDF or Excel copy.","#rpt"],activity:["History","Every add and deduct, newest first.","#act"],additem:["New item","Add a new product to the stockroom.","#add"],stockio:["Stock in / out","Record an addition or deduction for a single day.","#log"],import:["Import from Excel","Add many products at once from a spreadsheet.","#ip"]};
 function page(p){if(p==="ov"||p==="prod")lastMain=p;document.body.dataset.pg=p;replay();Object.keys(PG).forEach(k=>{const b=$(PG[k][2]);if(b)b.classList.toggle("on",k===p)});$("#pgh").textContent=PG[p][0];$("#pgs").textContent=PG[p][1];window.scrollTo(0,0)}
 function asPage(el,name){Object.defineProperty(el,"open",{get:()=>document.body.dataset.pg===name});el.showModal=()=>page(name);el.close=()=>{if(document.body.dataset.pg===name)page(lastMain)};return el}
 page("ov");$("#ov").onclick=()=>page("ov");$("#pnav").onclick=()=>page("prod");
-["#add","#ip","#log"].forEach(x=>$(x).addEventListener("click",()=>{if(document.body.dataset.pg!=="prod")page("prod")}));
 $("#q2").oninput=()=>{$("#q").value=$("#q2").value;page("prod");render()};
 function refresh(){window.rpLive&&window.rpLive();const a=document.activeElement;if(a&&a.closest&&a.closest("#rows")){document.querySelectorAll("#rows tr").forEach(tr=>{const it=items.find(i=>i.id==tr.dataset.id);if(it)paint(tr,it)});stats()}else render()}
 function restoreUI(){}
@@ -1315,10 +1392,20 @@ document.body.insertAdjacentHTML("beforeend",`<dialog id="rdlg" style="width:min
 <input id="rsq" placeholder="Search products"><div id="rlist"></div>
 <div class="r2"><span><button type="button" id="rsa">Select all shown</button> <button type="button" id="rsn">Clear</button></span><button id="r3" class="rb"></button></div></div>
 <div class="rbox"><b>Everything</b><button id="r2" class="rb dng"></button></div>
-<div class="acts"><button id="r0">Close</button></div></dialog>
-<dialog id="idlg" style="width:min(580px,94vw)">
+<div class="acts"><button id="r0">Close</button></div></dialog>`);
+$(".mc").insertAdjacentHTML("beforeend",`<section id="idlg" class="panel pgmod formpg"><div class="pgb">
+<button type="button" class="backlink" id="iback">&larr; Back to All items</button>
 <div class="dh imp"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 15V3m0 0L8 7m4-4l4 4M4 15v4a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-4"/></svg></i><b>Import from Excel</b></div>
-<ol class="steps"><li><b>Download the template</b> and fill it in, one product per row.</li><li><b>Choose the file.</b> You will see a check of every row before anything is added.</li></ol>
+<p class="sub">Add many products at once from a spreadsheet, instead of one at a time.</p>
+<div class="impgrid">
+  <div class="impsteps">
+    <div class="istep"><span class="inum">1</span><div><b>Download the template</b><p>Fill it in, one product per row.</p></div></div>
+    <div class="istep"><span class="inum">2</span><div><b>Upload the file</b><p>You'll see a check of every row before anything is added.</p></div></div>
+  </div>
+  <button type="button" class="impdrop" id="ich"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 15V3m0 0L8 7m4-4l4 4M4 15v4a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-4"/></svg><b>Drop your file here</b><span>or click to browse &middot; .xlsx or .csv</span></button>
+</div>
+<p class="sub">Only <b>Item</b> is required. Invalid rows and products already in the list are skipped. Products start in <b id="imon"></b>.</p>
+<details class="impref"><summary>Which columns go where?</summary>
 <table style="min-width:0;width:100%"><thead><tr><th>Column</th><th>What to enter</th><th>Example</th></tr></thead><tbody>
 <tr><td>Item</td><td>Product name (required)</td><td>Bond paper A4</td></tr>
 <tr><td>Brand</td><td>Brand or supplier (optional)</td><td>Paperone</td></tr>
@@ -1326,10 +1413,11 @@ document.body.insertAdjacentHTML("beforeend",`<dialog id="rdlg" style="width:min
 <tr><td>Quantity type</td><td>Unit: Piece, Box, Reams, Bottle</td><td>Reams</td></tr>
 <tr><td>MFG date</td><td>Date made, YYYY-MM-DD (optional)</td><td>2026-01-02</td></tr>
 <tr><td>Expiration date</td><td>Expiry, YYYY-MM-DD (optional)</td><td>2027-01-02</td></tr></tbody></table>
-<p class="sub">Only <b>Item</b> is required. Leave other cells blank and fill them in later in the table. Invalid rows and products already in the list are skipped. Products start in <b id="imon"></b>.</p>
-<div class="acts"><button id="ic">Cancel</button><button id="idl">1. Download template</button><button class="primary" id="ich">2. Choose file</button></div>
+</details>
+<div class="acts"><button id="ic">Cancel</button><button id="idl">Download template</button></div>
 <div id="dlfb" hidden><p class="sub">Downloads are not available in this view. Copy the header row below, paste it into cell A1 of a new Excel sheet, then fill in one product per row.</p><textarea id="dlfbt" readonly rows="2" style="min-height:0"></textarea><div class="acts"><button type="button" id="dlcp">Copy header row</button></div></div>
-<details><summary>Or paste rows copied from Excel</summary><p class="sub">Use the same columns as the table above.</p><textarea id="pt" placeholder="Paste rows here"></textarea><div class="acts"><button type="button" class="primary" id="ppaste">Check pasted rows</button></div></details></dialog>`);
+<details><summary>Or paste rows copied from Excel</summary><p class="sub">Use the same columns as the table above.</p><textarea id="pt" placeholder="Paste rows here"></textarea><div class="acts"><button type="button" class="primary" id="ppaste">Check pasted rows</button></div></details></div></section>`);
+asPage($("#idlg"),"import");$("#iback").onclick=()=>$("#idlg").close();
 $("#rmon").innerHTML=Array.from({length:NM},(_,i)=>`<option value="${i}">${mlabel(i)}</option>`).join("");
 $("#rst").onclick=()=>{$("#rdlg h2").textContent=admin?"Clear data":"Delete items";$("#rtxt").value="";$("#rsq").value="";rsel.clear();$("#rmon").value=m;rlist();$("#rdlg").showModal()};
 $("#r0").onclick=()=>$("#rdlg").close();$("#rbk").onclick=()=>rpBackup();
@@ -1342,7 +1430,8 @@ $("#r1").onclick=()=>wipe([],log.slice(),"Deleted all "+log.length+" entries");
 $("#r3").onclick=()=>{const d=items.filter(i=>rsel.has(i.id));PK=true;try{wipe(d,[],"Deleted "+d.length+" products")}finally{PK=false}};
 $("#r2").onclick=()=>wipe(items.slice(),log.slice(),"Deleted all products and entries");
 $("#ip").onclick=()=>{$("#imon").textContent=mlabel(m);$("#idlg").showModal()};
-$("#ic").onclick=()=>$("#idlg").close();$("#ich").onclick=()=>{$("#idlg").close();$("#pfile").click()};
+$("#ic").onclick=()=>$("#idlg").close();$("#ich").onclick=()=>$("#pfile").click();
+(()=>{const dz=$("#ich");if(!dz)return;["dragenter","dragover"].forEach(ev=>dz.addEventListener(ev,e=>{e.preventDefault();e.stopPropagation();dz.classList.add("drag")}));["dragleave","dragend"].forEach(ev=>dz.addEventListener(ev,()=>dz.classList.remove("drag")));dz.addEventListener("drop",e=>{e.preventDefault();dz.classList.remove("drag");const f=e.dataTransfer&&e.dataTransfer.files[0];if(f)handleImportFile(f)})})();
 async function dlTemplate(){const dl=window.claude&&await claude.use("downloads");if(!dl||typeof XLSX==="undefined"){$("#dlfb").hidden=false;const t=$("#dlfbt");t.value="Item\tBrand\tQuantity\tQuantity type\tMFG date\tExpiration date";t.select();return}
   const wb=XLSX.utils.book_new(),ws=XLSX.utils.aoa_to_sheet([["Item","Brand","Quantity","Quantity type","MFG date","Expiration date"]]);ws["!cols"]=[{wch:32},{wch:22},{wch:12},{wch:16},{wch:14},{wch:16}];
   const ins=XLSX.utils.aoa_to_sheet([["Column","What to enter","Example","Required"],["Item","Product name","Bond paper A4","Yes"],["Brand","Brand or supplier","Paperone","No"],["Quantity","Opening quantity: a number from 0 to 1,000,000","40","No (blank = 0)"],["Quantity type","Unit, such as Piece, Box, Reams, Bottle","Reams","No"],["MFG date","Date made, written YYYY-MM-DD","2026-01-02","No"],["Expiration date","Expiry date, written YYYY-MM-DD","2027-01-02","No"],[],["Notes"],["Fill in the Products sheet, one product per row. Do not rename the header row."],["Delete nothing from the Products header. The Instructions sheet is ignored on import."],["Rows with an invalid name, quantity or date are rejected, and products already in the list are skipped."]]);ins["!cols"]=[{wch:18},{wch:52},{wch:16},{wch:10}];
@@ -1711,6 +1800,14 @@ async function rpBackup(){try{toast("Preparing backup...");await rpLoad("xlsx");
   }
   paint();setInterval(paint,2000);window.addEventListener("online",paint);window.addEventListener("offline",paint);
 })();
+</script>
+<script>/* Design E: live summary card on the New item page */
+(function(){var f=document.getElementById('pf');if(!f)return;
+function v(n){var e=f.elements[n];return e?e.value:''}
+function fmt(s){if(!s)return'Not set';var p=s.split('-');var d=new Date(+p[0],+p[1]-1,+p[2]);return isNaN(d)?s:d.toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'})}
+function set(id,t){var e=document.getElementById(id);if(e&&e.textContent!==t)e.textContent=t}
+function upd(){set('s_name',v('name').trim()||'New item');set('s_brand',v('brand').trim()||'Brand not set');set('s_type',v('type'));set('s_open',v('open')||'0');set('s_min',v('min')||'0');set('s_mfg',fmt(v('mfg')));set('s_exp',fmt(v('exp')))}
+f.addEventListener('input',upd);f.addEventListener('change',upd);setInterval(upd,500);upd();})();
 </script>
 </body>
 </html>
